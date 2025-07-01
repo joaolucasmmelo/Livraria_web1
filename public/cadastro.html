@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro - Biblioteca</title>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <main class="login-container">
+    <h1>Cadastro de Usuário</h1>
+    <form id="cadastro-form">
+      <label for="novo-usuario">Crie um usuário:</label>
+      <input type="text" id="novo-usuario" placeholder="ex: joao123" required />
+      
+      <label for="nova-senha">Crie uma senha:</label>
+      <input type="password" id="nova-senha" placeholder="••••••••" required />
+      
+      <button type="submit">Cadastrar</button>
+    </form>
+    <p id="mensagem" style="text-align: center; margin-top: 15px; display: none;"></p>
+    <p style="text-align: center; margin-top: 15px;">
+      Já tem uma conta? <a href="login.html">Faça login</a>
+    </p>
+  </main>
+
+  <script>
+    const form = document.getElementById('cadastro-form');
+    const mensagem = document.getElementById('mensagem');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const user = document.getElementById('novo-usuario').value.trim();
+      const senha = document.getElementById('nova-senha').value.trim();
+
+      if (!user || !senha) {
+        mensagem.textContent = 'Por favor, preencha todos os campos.';
+        mensagem.style.color = 'red';
+        mensagem.style.display = 'block';
+        return;
+      }
+
+      const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+      const usuarioExistente = usuarios.find(u => u.user === user);
+
+      if (usuarioExistente) {
+        mensagem.textContent = 'Este nome de usuário já está em uso!';
+        mensagem.style.color = 'red';
+        mensagem.style.display = 'block';
+      } else {
+        usuarios.push({ user, senha });
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        
+        mensagem.textContent = 'Cadastro realizado com sucesso!';
+        mensagem.style.color = 'green';
+        mensagem.style.display = 'block';
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Livros Disponíveis para Aluguel</title>
+  <link rel="stylesheet" href="css/lists.css">
+</head>
+<body>
+
+  <header>
+    <h1>Livros Disponíveis para Aluguel</h1>
+    <a href="inputs.html" class="btn-voltar">← Voltar à página principal</a>
+  </header>
+
+  <main>
+    <div class="listas">
+      <div class="coluna">
+        <h2>Catálogo (Disponíveis)</h2>
+        <ul id="livros-disponiveis"></ul>
+      </div>
+
+      <div class="coluna">
+        <h2>Livros Alugados</h2>
+        <ul id="livros-alugados"></ul>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const livros = JSON.parse(localStorage.getItem("livros")) || [];
+
+    const listaDisponiveis = document.getElementById("livros-disponiveis");
+    const listaAlugados = document.getElementById("livros-alugados");
+
+    livros.forEach(livro => {
+      const item = document.createElement("li");
+      item.innerHTML = `
+        <strong>${livro.titulo}</strong><br>
+        <em>${livro.autor || "Autor não informado"}</em><br>
+        ${livro.descricao || ""}
+      `;
+
+      if (!livro.alugadoPor) {
+        listaDisponiveis.appendChild(item);
+      } else {
+        const itemAlugado = document.createElement("li");
+        itemAlugado.innerHTML = `
+          <strong>${livro.titulo}</strong><br>
+          <em>${livro.autor || "Autor não informado"}</em><br>
+          ${livro.descricao || ""}<br>
+          <span><strong>Alugado por:</strong> ${livro.alugadoPor}</span>
+        `;
+        listaAlugados.appendChild(itemAlugado);
+      }
+    });
+
+    if (!listaDisponiveis.hasChildNodes()) {
+      listaDisponiveis.innerHTML = "<li>Nenhum livro disponível no momento.</li>";
+    }
+
+    if (!listaAlugados.hasChildNodes()) {
+      listaAlugados.innerHTML = "<li>Nenhum livro alugado no momento.</li>";
+    }
+  </script>
+</body>
+</html>

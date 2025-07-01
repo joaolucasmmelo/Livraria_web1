@@ -1,0 +1,158 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Calibri', sans-serif;
+}
+
+body {
+    background-color: #ccc;
+    color: black;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #00ccff;
+    color: black;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+nav {
+    display: flex;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+nav img {
+    vertical-align: middle;
+    width: 18px;
+    padding-bottom: 3px;
+}
+
+.botao-link {
+    display: inline-block;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.botao-link:hover {
+    transform: rotate(3deg);
+    background-color: #444;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+input, select, button, textarea {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: 'Calibri', sans-serif;
+}
+
+button {
+    font-size: 18px;
+    background-color: #00ccff;
+    color: black;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #00bceb;
+}
+
+#cadastro-autor form,
+#cadastro-livro form,
+#alugar-livro form,
+#devolver-livro form {
+    background-color: #fdfdfd;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #eaeaea;
+    color: gray;
+}
+
+#limpar-dados {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#btn-limpar {
+  background-color: crimson;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#btn-limpar:hover {
+  background-color: darkred;
+}
+
+#aluguel-livro form,
+#devolucao-livro form {
+  background-color: #fdfdfd;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+#aluguel-livro h2,
+#devolucao-livro h2 {
+  margin-bottom: 10px;
+  color: #222;
+}
+
+#aluguel-livro,
+#devolucao-livro {
+  margin-top: 40px;
+}

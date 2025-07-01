@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Biblioteca</title>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <main class="login-container">
+    <h1>Login Biblioteca</h1>
+    <form id="login-form">
+      <label for="usuario">Usuário:</label>
+      <input type="text" id="usuario" placeholder="Digite seu usuário" required />
+      
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" placeholder="Digite sua senha" required />
+      
+      <button type="submit">Entrar</button>
+    </form>
+    <p id="erro" class="erro-msg" style="display:none;">Usuário ou senha inválidos!</p>
+    <p style="text-align: center; margin-top: 15px;">
+      Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
+    </p>
+  </main>
+
+  <script>
+    const form = document.getElementById('login-form');
+    const erro = document.getElementById('erro');
+
+    if (localStorage.getItem('usuarioLogado')) {
+      window.location.href = 'inputs.html';
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const user = document.getElementById('usuario').value.trim();
+      const senha = document.getElementById('senha').value.trim();
+      const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+      const usuarioValido = usuarios.find(u => u.user === user && u.senha === senha);
+
+      if (usuarioValido) {
+        localStorage.setItem('usuarioLogado', user); 
+        window.location.href = 'inputs.html';
+      } else {
+        erro.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

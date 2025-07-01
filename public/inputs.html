@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biblioteca - Sistema de Empréstimo</title>
+  <link rel="stylesheet" href="css/inputs.css">
+  <style>
+    .info-usuario {
+      color: white;
+      margin-right: 15px;
+      background-color: #0056b3;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    if (!localStorage.getItem('usuarioLogado')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+
+  <header>
+    <h1>Biblioteca Virtual</h1>
+    <nav>
+      <span id="display-usuario" class="info-usuario"></span>
+      <a class="botao-link" href="https://github.com/joaolucasmmelo/Livraria-Web1" target="_blank">
+        <img src="img\white github.png" alt="Icone GitHub"> Repositório Github
+      </a>
+      <a href="lists.html" class="botao-link">Visitar lista de livros</a>
+      <button id="btn-logout" class="botao-link">Sair (Logout)</button>
+    </nav>        
+  </header>
+
+  <main>
+    <section id="cadastro-autor">
+      <h2>Cadastrar Autor</h2>
+      <form id="form-autor">
+        <label for="nomeAutor">Insira o nome do autor:</label>
+        <input type="text" id="nomeAutor" name="nomeAutor" placeholder="Nome autor" required />
+        <button id="botaocadastrarautor" type="submit">Cadastrar Autor</button>
+      </form>
+    </section>
+
+    <section id="cadastro-livro">
+      <h2>Cadastrar Livro</h2>
+      <form id="form-livro">
+        <label for="tituloLivro">Insira o título do livro:</label>
+        <input
+          type="text"
+          id="tituloLivro"
+          name="tituloLivro"
+          placeholder="Título"
+          required
+        />
+
+        <label for="descricaoLivro">Insira a descrição do livro:</label>
+        <textarea
+          id="descricaoLivro"
+          name="descricaoLivro"
+          placeholder="Descrição"
+          rows="3"
+          required
+        ></textarea>
+
+        <label for="autorLivro">Escolha o autor do livro:</label>
+        <select id="autorLivro" name="autorLivro" required>
+          <option value="">Selecione...</option>
+        </select>
+
+        <button type="submit">Cadastrar Livro</button>
+      </form>
+    </section>
+
+    <section id="alugar-livro">
+      <h2>Alugar Livro</h2>
+      <form id="form-aluguel">
+        <label for="livroParaAlugar">Escolha um livro disponível:</label>
+        <select id="livroParaAlugar" name="livroParaAlugar" required>
+          <option value="">Selecione...</option>
+        </select>
+        <button type="submit">Alugar Livro</button>
+      </form>
+    </section>
+
+    <section id="devolver-livro">
+      <h2>Devolver Livro</h2>
+      <form id="form-devolucao">
+        <label for="livroParaDevolver">Escolha um livro alugado por você:</label>
+        <select id="livroParaDevolver" name="livroParaDevolver" required>
+          <option value="">Selecione...</option>
+        </select>
+        <button type="submit">Devolver Livro</button>
+      </form>
+    </section>
+
+    <section id="limpar-dados">
+      <button id="btn-limpar">🗑️ Limpar Todos os Dados</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sistema de Biblioteca</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
